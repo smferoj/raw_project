@@ -40,3 +40,5 @@ onMounted(() => {
         return redirect()->intended($url);
 
 <!-- ===============admin and user route complete  -->
+
+<!--  Middleware create -->

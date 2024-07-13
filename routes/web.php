@@ -38,10 +38,22 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+    
+});
 
 
-Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
-Route::get('user/dashboard', [UserController::class, 'UserDashboard'])->name('user.dashboard');
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';
